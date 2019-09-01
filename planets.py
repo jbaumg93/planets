@@ -7,8 +7,8 @@ from recordtype import recordtype
 
 Planet = recordtype('Planet', 'c v m')
 
-G = 10
-MAX_INIT_V = 20
+G = 2000
+MAX_INIT_V = 5
 PLANETS = 5
 
 SCREEN_X = 500
@@ -45,7 +45,7 @@ def update_planets():
         for Q_j in planets_copy:
             if Q_j is not Q_i:
                 q_j = Q_j.c
-                d2q_i += G * Q_j.m * (q_j - q_i) / (np.hypot(q_j, q_i) ** 2)
+                d2q_i += G * Q_j.m * (q_j - q_i) / (np.hypot(q_j, q_i) ** 3)
 
         p.v = Q_i.v + d2q_i
         p.c = Q_i.c + p.v
